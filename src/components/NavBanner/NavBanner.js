@@ -1,5 +1,6 @@
 import React from 'react'
-import Dots from '../assets/images/white-circles.svg';
+import Dots from '../../assets/images/white-circles.svg';
+import './NavBanner.css'
 function NavBanner(props) {
   return (
     <section className={`banner ${props.class}`}>

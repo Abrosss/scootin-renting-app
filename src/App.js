@@ -5,8 +5,8 @@ import About from './pages/About';
 import Location from './pages/Location';
 import Careers from './pages/Careers';
 import Home from './pages/Home';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 function App() {
   return (
     <Router>

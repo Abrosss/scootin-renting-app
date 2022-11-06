@@ -1,0 +1,97 @@
+.header {
+    padding: 1.5rem 12rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .burgerMenu {
+    height: 88vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0,.7);
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+  }
+  .burgerMenu {
+    display: none;
+  }
+  .burgerContent {
+    height: 100%;
+    width: 70%;
+    background-color: #333A44;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10%;
+  }
+  .burgerContent nav {
+    height: 100%;
+    width: 100%;
+  }
+  .header .nav-link {
+    color: var(--dimgrey);
+    text-decoration: none;
+    font-weight: 700
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  .nav-link:hover {
+    color: var(--yellow);
+  }
+  nav a:first-child {
+    margin-right: 10rem;
+  }
+  .burger {
+    display: none;
+  }
+  @media only screen and (min-width:250px) and (max-width: 768px) {
+    /* For mobile phones: */
+    .header {
+      padding: 1.5rem 1rem;
+      justify-content: center;
+      text-align: center;
+    }
+    .header .button{
+     display: none;
+    }
+   .header  .nav-link {
+      display: none;
+    }
+    .burgerContent nav {
+      flex-direction: column;
+      padding: 4rem 3rem;
+      align-items: flex-start;
+   
+      gap: 1.5rem;
+    }
+    .burgerContent .button {
+      display: flex;
+      width: 70%;
+    }
+    .burgerMenu.show {
+      display: flex;
+    }
+    .burgerContent .nav-link {
+      display: flex;
+      color: white;
+      letter-spacing: 1px;
+      font-weight: 400;
+    }
+    nav a:first-child {
+      margin-right: 0;
+    }
+    .burger {
+      display: block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      left: 5%;
+    }
+  }

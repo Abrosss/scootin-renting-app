@@ -1,0 +1,23 @@
+.banner--about {
+    background-image:url(/src/assets/images/about-hero-desktop.jpg);
+  
+  }
+  .banner--careers {
+    background-image:url(/src/assets/images/careers-locations-hero-desktop.jpg);
+  
+  }
+
+  
+  @media only screen and (min-width:250px) and (max-width: 768px) {
+ .dots {
+    display: none;
+ }
+ .banner {
+    padding: 0;
+    justify-content: center;
+ }
+ .banner--careers {
+   margin-bottom: 0;
+ 
+ }
+  }

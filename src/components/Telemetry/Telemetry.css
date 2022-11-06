@@ -1,0 +1,171 @@
+.telemetry {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 3.5rem 12rem;
+  
+    position: relative;
+    gap: 15rem;
+  }
+  .telemetry::after {
+    content: "";
+    position: absolute;
+    background-color: #E5ECF4;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    right: -25%;
+  }
+  .telemetry-right-arrow::after {
+    width: 48rem;
+    height: 10rem;
+    content: "";
+    position: absolute;
+    background-image: url(/src/assets/images/left-downward-arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 8;
+    bottom: 0;
+    right: -15rem
+  }
+  .telemetry-right-arrow-upward::after {
+    width: 48rem;
+    height: 10rem;
+    content: "";
+    position: absolute;
+    background-image: url(/src/assets/images/left-upward-arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 8;
+    bottom: 0;
+    right: -15rem
+  }
+  .telemetry-right-arrow-short::after {
+    width: 48rem;
+    height: 10rem;
+    content: "";
+    position: absolute;
+    background-image: url(/src/assets/images/left-downward-arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 8;
+    top: 15%;
+    right: -35rem
+  }
+  .telemetry-left-arrow::after {
+    width: 48rem;
+    height: 10rem;
+    content: "";
+    position: absolute;
+    background-image: url(/src/assets/images/right-arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 8;
+    top: 0;
+    left: -15rem
+  }
+  .telemetry-reverse::after{
+    left: -25%;
+    right: unset;
+  }
+  .telemetry .telemetry__section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+   
+  
+  }
+  .telemetry .picture {
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+  .telemetry-reverse {
+    flex-direction: row-reverse;
+  }
+  @media only screen and (min-width:250px) and (max-width: 768px) {
+    /* For mobile phones: */
+    .telemetry {
+        flex-direction: column-reverse;
+        padding: 0;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 5rem;
+      }
+      .telemetry-reverse {
+        flex-direction: column-reverse;
+      }
+      .telemetry::after {
+        display: none;
+       
+      }
+      .telemetry-right-arrow::after {
+        width: 48rem;
+        height: 10rem;
+        content: "";
+        position: absolute;
+        background-image: url(/src/assets/images/left-downward-arrow.svg);
+        background-repeat: no-repeat;
+        z-index: 8;
+        bottom: 0;
+        right: -140%
+      }
+      .telemetry-right-arrow-upward::after {
+        width: 48rem;
+        height: 10rem;
+        content: "";
+        position: absolute;
+        background-image: url(/src/assets/images/left-upward-arrow.svg);
+        background-repeat: no-repeat;
+        z-index: 8;
+        bottom: 0;
+        right: -28rem
+      }
+      .telemetry-right-arrow-short::after {
+        width: 48rem;
+        height: 10rem;
+        content: "";
+        position: absolute;
+        background-image: url(/src/assets/images/left-downward-arrow.svg);
+        background-repeat: no-repeat;
+        z-index: 8;
+        top: 15%;
+        right: -35rem
+      }
+      .telemetry-left-arrow::after {
+        width: 48rem;
+        height: 10rem;
+        content: "";
+        position: absolute;
+        background-image: url(/src/assets/images/right-arrow.svg);
+        background-repeat: no-repeat;
+        z-index: 8;
+        top: 12%;
+        left: -8rem
+      }
+      .telemetry-reverse::after{
+        left: -25%;
+        right: unset;
+      }
+      .telemetry .telemetry__section {
+        padding-top: 3rem;
+        width: 85%;
+        align-items: center;
+       text-align: center;
+      
+      }
+      .telemetry .telemetry__section h4 {
+        font-size: 2.5rem;
+      
+      }
+      .telemetry .picture {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+      }
+  }

@@ -1,0 +1,125 @@
+
+  .banner--home {
+    position: relative;
+    height: 80vh;
+    background-image:url(/src/assets/images/home-hero-desktop.jpg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 10rem;
+  }
+  .banner--home__text {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  
+  }
+  .banner--home__text h1 {
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .banner--home__text p {
+    padding-left: 6rem;
+    width: 80%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: white;
+    position: relative;
+    display: flex ;
+    align-items: center;
+  }
+  .banner--home__text p::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1rem;
+  
+    background-image: url(/src/assets/images/line.svg);
+    background-repeat: no-repeat;
+    left: -33%;
+  }
+  .banner--home__text p::after {
+    content: "";
+    position: absolute;
+    width: 32rem;
+    height: 12rem;
+    background-image: url(/src/assets/images/right-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    left: 112%;
+    top: 46%;
+  }
+  .dots--home {
+    position: absolute;
+    right: 0;
+    bottom: 22%;
+    right: -2%;
+  }
+
+  @media only screen and (min-width:250px) and (max-width: 768px) {
+    /* For mobile phones: */
+    .banner--home {
+      padding: 0;
+      background-image:url(/src/assets/images/home-hero-mobile.jpg);
+      height: 100vh;
+    }
+    .banner--home__text {
+      width: 100%;
+      height: 100%;
+  
+      gap: 1.8rem;
+      padding: 0 2rem;
+      padding-top: 5rem;
+      align-items: center;
+      
+    }
+    .dots--home {
+      display: none;
+    }
+    .banner--home__text h1 {
+      letter-spacing: 2px;
+      line-height: 1;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    .banner--home__text p {
+      text-align: center;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: white;
+      position: relative;
+      display: flex ;
+      align-items: center;
+      padding: 0;
+    }
+    .banner--home__text p::before {
+      display: none;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1rem;
+    
+      background-image: none;
+      background-repeat: no-repeat;
+      left: -33%;
+    }
+    .banner--home__text p::after {
+      content: "";
+      position: absolute;
+      width: 32rem;
+      height: 12rem;
+      background-image: url(/src/assets/images/right-arrow.svg);
+      background-repeat: no-repeat;
+      background-size: 80%;
+      left: -100%;
+      top: 155%;
+    }
+    .banner--home .button {
+      margin: 0;
+      width: 70%;
+    }
+  }

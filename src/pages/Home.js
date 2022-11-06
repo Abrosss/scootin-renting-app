@@ -1,21 +1,14 @@
 
 
 
-import Dots from '../assets/images/white-circles.svg';
-import Button from "../components/Button";
-import Telemetry from '../components/Telemetry';
 
+
+import Telemetry from '../components/Telemetry/Telemetry';
+import HeroBanner from '../components/HeroBanner/HeroBanner';
 function Home() {
   return (
     <div className='container'>
-   <section className="banner banner--home">
-    <section className="banner--home__text">
-                  <h1>Scooter sharing made simple</h1>
-                  <p>Scoot takes the hassle out of urban mobility. Our bikes are placed in convenient locations in each of our cities. Use our app to locate the nearest bike, unlock it with a tap, and you’re away!</p>
-                  <Button class="button--home button--banner" text="Get Scootin"/>
-                  <span className="dots--home"><img src={Dots}></img></span>
-                  </section>
-                </section>
+      <HeroBanner/>
             <section class="middle">
         
             <div class="line">

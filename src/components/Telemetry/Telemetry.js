@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from './Button'
-
+import Button from '../Button/Button'
+import './Telemetry.css'
 function Telemetry() {
   return (
     <>
@@ -14,7 +14,7 @@ function Telemetry() {
         <section className='picture picture--telemetry'></section>
       </section>
     </div>
-    <div className='telemetry telemetry-reverse' style={{ flexDirection: 'row-reverse' }}>
+    <div className='telemetry telemetry-reverse' >
     <section className='telemetry__section '>
       <h4>Coming to a city near you</h4>
       <p>Scoot is available in 4 major cities so far. We’re expanding rapidly, so be sure to let us know if you want to see us in your hometown. We’re aiming to let our scooters loose on 23 cities over the coming year.</p>

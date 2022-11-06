@@ -1,5 +1,5 @@
-import Button from "../components/Button";
-import NavBanner from "../components/NavBanner";
+import Button from "../components/Button/Button";
+import NavBanner from "../components/NavBanner/NavBanner";
 import CareersOption from "../components/CareersOption";
 function Careers() {
     return (

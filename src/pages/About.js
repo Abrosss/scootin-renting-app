@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NavBanner from "../components/NavBanner";
+import NavBanner from "../components/NavBanner/NavBanner";
 
 function About() {
       const [active, setActive] = useState(null)
@@ -35,7 +35,7 @@ function About() {
             setActive(i)
  
       }
-  console.log(active)
+  
     return (
       <div className="container">
                 <NavBanner text='About'
@@ -50,7 +50,7 @@ function About() {
         <section className='picture picture--digitalera telemetry-right-arrow-upward'></section>
       </section>
     </div>
-    <div className='telemetry telemetry-reverse' style={{ flexDirection: 'row-reverse'}}>
+    <div className='telemetry telemetry-reverse' >
     <section className='telemetry__section'>
       <h4>Better urban living</h4>
       <p>We’re helping connect cities and bring people closer together. Our scooters are also fully-electric and we offset the minimal carbon footprint for each ride.</p>
