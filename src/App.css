@@ -566,4 +566,7 @@ cursor: pointer;
   .careers-option .button {
     width: 100%;
   }
+  .pin::after {
+    display: none;
+  }
 }
