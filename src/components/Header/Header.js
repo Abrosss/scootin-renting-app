@@ -5,17 +5,45 @@ import {ReactComponent as Cross} from '../../assets/images/cross.svg'
 import Logo from '../../assets/images/logo.svg';
 import './Header.css';
 import { useState } from "react";
+import { useEffect } from "react";
 import { useRef } from "react";
 function Header() {
+  const getWindowDimensions = () => {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  };
+  
+  const useWindowDimensions = () => {
+    const [windowDimensions, setWindowDimensions] = useState(
+      getWindowDimensions()
+    );
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+      }
+  
+    window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+  
+    return windowDimensions;
+  };
+  const { height, width } = useWindowDimensions();
   const [activeMenu, setActiveMenu] = useState(false)
-  console.log(activeMenu)
- const navRef = useRef()
- console.log(navRef.current.clientHeight)
- console.log(window.innerHeight)
+  const [elemHeight, setElemHeight] = useState(0)
+  const navRef = useRef(null)
+  useEffect(() => {
+    setElemHeight(navRef.current.clientHeight)
+  })
+
  function proportion() {
-  return Math.floor(navRef.current.clientHeight * 100 / window.innerHeight) 
+  return Math.floor(elemHeight * 100 / height) 
  }
- console.log(proportion())
+
     return (
       <div ref={navRef} className="header">
        {activeMenu ? <Cross onClick={() => setActiveMenu(!activeMenu)} className="burger"/>  : <YourSvg onClick={() => setActiveMenu(!activeMenu)} className="burger"/>
@@ -27,7 +55,7 @@ function Header() {
         <Link className="nav-link" to="/careers">Careers</Link>
         </nav>
         <Button text='Get Scootin'/>
-        <section style={{top: proportion() + "%"}} className={activeMenu ? "burgerMenu show" : "burgerMenu"}>
+        <section style={{top:proportion() + "%"}}  className={activeMenu ? "burgerMenu show" : "burgerMenu"}>
           <section className="burgerContent">
           <nav>
         <a className="nav-link" href="/about">About</a>
