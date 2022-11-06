@@ -8,10 +8,13 @@ import Home from './pages/Home';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { useEffect } from 'react';
+
+
 function App() {
   useEffect(() => {
     document.title = 'scoot';
   });
+
   return (
     <Router>
       <Header/>
