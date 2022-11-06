@@ -7,7 +7,7 @@ Users should be able to:
 
 - Live Site URL: [LIVE](https://scooting-app.netlify.app/)
 
-![](./coffee.jpg)
+![](./scoot.jpg)
 
 ### Built with
 
