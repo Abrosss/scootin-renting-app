@@ -46,8 +46,14 @@ exports.postLogin = (req, res, next) => {
       if (err) {
         return next(err);
       }
-   
-      res.status(200).send(req.user)
+      const token = createToken(req.user)
+      res.json({
+        token:token,
+        username:req.user.username,
+        id:req.user._id,
+        location:req.user.location
+      })
+      // res.status(200).send(req.user)
       // const {password, ...rest} = user
       // const userInfo = Object.assign({}, {...rest})
       // const token = createToken(userInfo)
