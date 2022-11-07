@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from '../Button/Button'
+import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import {ReactComponent as YourSvg} from '../menu.svg'
 import {ReactComponent as Cross} from '../../assets/images/cross.svg'
 import Logo from '../../assets/images/logo.svg';
@@ -7,7 +8,12 @@ import './Header.css';
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
+import AuthContext from '../../context/AuthProvider'
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 function Header() {
+  const {auth, setAuth} = useContext(AuthContext)
+  const navigate = useNavigate()
   const getWindowDimensions = () => {
     const { innerWidth: width, innerHeight: height } = window;
     return {
@@ -36,10 +42,18 @@ function Header() {
   const [activeMenu, setActiveMenu] = useState(false)
   const [elemHeight, setElemHeight] = useState(0)
   const navRef = useRef(null)
+  console.log(auth)
   useEffect(() => {
     setElemHeight(navRef.current.clientHeight)
   })
-
+function handleLogout(e) {
+  e.preventDefault()
+  console.log(e)
+  setAuth(null)
+    localStorage.clear()
+    navigate('/')
+  
+}
  function proportion() {
   return Math.floor(elemHeight * 100 / height) 
  }
@@ -54,7 +68,12 @@ function Header() {
         <Link className="nav-link" to="/location">Location</Link>
         <Link className="nav-link" to="/careers">Careers</Link>
         </nav>
-        <Button text='Get Scootin'/>
+        {auth ? <button type="button" className="button" onClick={handleLogout}>Logout</button> :
+         <Button  link="/signin" text="Get Scootin"/> 
+        
+        
+      }
+        
         <section style={{top:proportion() + "%"}}  className={activeMenu ? "burgerMenu show" : "burgerMenu"}>
           <section className="burgerContent">
           <nav>
@@ -62,7 +81,7 @@ function Header() {
         <a className="nav-link" href="/location">Location</a>
         <a className="nav-link" href="/careers">Careers</a>
         </nav>
-        <Button text='Get Scootin'/>
+        <Button link="/signin" text='Get Scootin'/>
           </section>
         </section>
       </div>

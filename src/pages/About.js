@@ -84,10 +84,10 @@ function About() {
             </section>
       </section>
       <h2>FAQs</h2>
-      <section className="faqs">
+      <section  className="faqs">
            
-            <section className="faqs__content">
-                  <h5>How it works</h5>
+            <section  className="faqs__content">
+                  <h5 id="faq" >How it works</h5>
                   <section className="questions">
                         {content.slice(0,3).map((section,i)=> (
                               <section>

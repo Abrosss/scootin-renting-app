@@ -1,9 +1,9 @@
 import React from 'react'
 import './Button.css';
-
+import { Link } from 'react-router-dom';
 function Button(props) {
   return (
-    <button title={props.text} className={`button ${props.class}`}>{props.text}</button>
+    <Link to={props.link} className={`button ${props.class}`}>{props.text}</Link>
   )
 }
 
