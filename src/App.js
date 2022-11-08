@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
+import Rides from './pages/Rides';
 import { useEffect } from 'react';
 
 
@@ -22,6 +23,7 @@ function App() {
     <Router>
       <Header/>
       <Routes>
+      <Route path='/rides' element={<Rides />}/>
       <Route path='/dashboard' element={<Dashboard />}/>
       <Route path='/signup' element={<SignUp />}/>
       <Route path='/signin' element={<SignIn />}/>

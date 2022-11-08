@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom'
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import Button from "../components/Button/Button";
 import ButtonSubmit from '../components/ButtonSubmit/ButtonSubmit'
+import axios from '../api/axios'
 function Dashboard() {
   const { auth } = useContext(AuthContext)
   const [cityArray, setCityArray] = useState(null)
@@ -13,6 +14,7 @@ function Dashboard() {
   const [totalPrice, setTotalPrice] = useState(null)
   const [error, setError] = useState(null)
   const [checkout, setCheckout] = useState(false)
+  console.log(current)
   const cities = [ 
     {
       city: "london", 
@@ -184,8 +186,24 @@ function Dashboard() {
       setCheckout(false)
     } 
   }
-
-
+console.log(totalPrice)
+function handleCheckout(e) {
+  e.preventDefault()
+  setCheckout(true)
+  axios.post(`/api/${auth.id}/rides`, {
+    street:current.location,
+    charge:current.chargeLeft,
+    price:current.price,
+    time: current.time,
+    total:totalPrice
+   }).then(res =>{
+    if(res.status===200) {
+     console.log(res)
+    }
+    
+   })
+   .catch(err=>setError(err.response.data))
+}
  
 
   if (!localStorage.getItem('user')) {
@@ -280,7 +298,7 @@ function Dashboard() {
       {error && <span>{error}</span>}
       { totalPrice>0 &&<span>You pay <span className='accent'>{totalPrice} $</span> </span>}
       
-      <button onClick={() => setCheckout(true)} type="button" className="button ">Checkout</button>
+      <button onClick={handleCheckout} type="button" className="button ">Checkout</button>
     </section>
       }  
        {checkout && <section className='thankyou'><h5>Thank you. Have a nice ride!</h5></section>} 

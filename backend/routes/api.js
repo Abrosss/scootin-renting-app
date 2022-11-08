@@ -4,6 +4,8 @@ const apiController = require("../controllers/api");
 
 
 //Main Routes - simplified for now
+router.get("/:id/rides", apiController.getRides)
+router.post("/:id/rides", apiController.postRides)
 // router.get("/lessons", adminController.getAllLessons);
 // router.get("/lessons/:id", adminController.getOneLesson);
 // router.post("/addLessonYoutube", adminController.postYoutubeLesson);

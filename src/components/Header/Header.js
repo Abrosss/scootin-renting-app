@@ -63,17 +63,22 @@ function handleLogout(e) {
        {activeMenu ? <Cross onClick={() => setActiveMenu(!activeMenu)} className="burger"/>  : <YourSvg onClick={() => setActiveMenu(!activeMenu)} className="burger"/>
         }
         <nav>
-        <Link to="/"><img src={Logo}></img></Link>
+       {auth ? <Link to="/dashboard"><img src={Logo}></img></Link> : <Link to="/"><img src={Logo}></img></Link>} 
         <Link className="nav-link" to="/about">About</Link>
         <Link className="nav-link" to="/location">Location</Link>
         <Link className="nav-link" to="/careers">Careers</Link>
         </nav>
-        {auth ? <button type="button" className="button" onClick={handleLogout}>Logout</button> :
+        <div className="logout">
+          {auth && <Link className="nav-link" to="/rides">My account</Link>}
+        
+        {auth ? <button type="button" className="button button--nobackground " onClick={handleLogout}>Logout</button>
+        
+      :
          <Button  link="/signin" text="Get Scootin"/> 
         
         
       }
-        
+        </div>
         <section style={{top:proportion() + "%"}}  className={activeMenu ? "burgerMenu show" : "burgerMenu"}>
           <section className="burgerContent">
           <nav>

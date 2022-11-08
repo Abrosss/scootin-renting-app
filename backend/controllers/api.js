@@ -1,7 +1,6 @@
-// const Lesson = require("../models/lesson");
-// const AdminDictionary = require("../models/AdminDictionary")
-// const youtubeThumbnail = require('youtube-thumbnail');
-// module.exports = {
+const Ride = require("../models/ride");
+
+module.exports = {
 //   getAllLessons: async (req, res) => {
 //     try {
 //       const lessons = await Lesson.find()
@@ -87,31 +86,39 @@
  
   
 //   },
-//   getWords: async (req, res) => {
-//     try {
-//       const words = await AdminDictionary.find().sort({level:1})
-//       res.json(words)
-//     } catch (err) {
-//       console.log(err);
-//     }
+  getRides: async (req, res) => {
+    try {
+      const rides = await Ride.find()
+      res.json(rides)
+    } catch (err) {
+      console.log(err);
+    }
 
-//   },
-//   postWords: async (req, res) => {
-//     try {
+  },
+  postRides: async (req, res) => {
 
-
-//       let level = req.body.level
-//       let words = req.body.words
+  
+    try {
+        let id = req.params.id
+      let street = req.body.street
+      let charge = req.body.charge
+      let price = req.body.price
+      let time = req.body.time
+      let total = req.body.total
       
-//               await AdminDictionary.create({
-//                level:level,
-//                words:words
+              await Ride.create({
+                street:street,
+                charge:charge,
+                price:price,
+                time:time,
+                user:id,
+                total:total
               
-//               });
-//               res.send('word added!')
-//             } catch (err) {
-//               console.log(err);
-//             }
-//   }
+              });
+              res.send('ride added')
+            } catch (err) {
+              console.log(err);
+            }
+  }
 
-// }
+}
