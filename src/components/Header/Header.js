@@ -42,13 +42,13 @@ function Header() {
   const [activeMenu, setActiveMenu] = useState(false)
   const [elemHeight, setElemHeight] = useState(0)
   const navRef = useRef(null)
-  console.log(auth)
+
   useEffect(() => {
     setElemHeight(navRef.current.clientHeight)
   })
 function handleLogout(e) {
   e.preventDefault()
-  console.log(e)
+ 
   setAuth(null)
     localStorage.clear()
     navigate('/')

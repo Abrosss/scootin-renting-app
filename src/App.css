@@ -478,12 +478,132 @@ gap: 2rem;
   height: 100vh;
   width: 100vw;
 }
-
+.countryListContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  background-color: white;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  gap: 5rem;
+}
+.totalPriceContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: 5000;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  gap: 5rem;
+}
+.totalPrice {
+  width: 25rem;
+  height: 30rem;
+  background-color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .5rem;
+}
+.totalPrice h5 {
+  margin: 0;
+}
+.totalPrice input {
+  width: 100%;
+  padding: 0.5rem .5rem;
+  font-family: 'Space Mono', monospace;
+  outline: none;
+  color: #495567;
+  letter-spacing: 1px;
+  font-size: .9rem;
+  border: 3px var(--yellow)  solid;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.thankyou {
+  width: 20rem;
+  height: 20rem;
+  background-color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: .5rem;
+}
+.totalPrice .button {
+  margin-top: auto;
+}
+.countryList {
+  width: 20rem;
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  
+}
 .leaflet-container {
   width: 100%;
   height: 50%;
 }
+.leaflet-popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .3rem;
+}
+.leaflet-popup-content .button {
+  padding: .5rem .5rem;
+  width: 80%;
+}
+table {
+  width: 100%;
+}
 
+td {
+  text-align: center;
+  word-break: break-word;
+}
+tr {
+  height: 3rem;
+}
+td:hover {
+  background-color: rgba(246, 177, 39,.15)
+}
+th:first-child {
+  text-align: left;
+}
+td:last-child:hover {
+  background-color: transparent
+}
+td:first-child {
+ text-align: left;
+ width: 60%;
+}
+.button--right {
+  background-color: transparent;
+  width: 20%;
+  margin-top: 5rem;
+}
+.container--rent {
+  padding: 0 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+.container--rent .button {
+  padding: .5rem 1rem;
+}
 @media only screen and (min-width:250px) and (max-width: 768px) {
   /* For mobile phones: */
   h2 {
