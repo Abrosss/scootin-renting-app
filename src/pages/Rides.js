@@ -100,9 +100,10 @@ function Rides() {
             ))
         
             }
+         
         </tbody>
       </table> 
-      
+      {rides.length === 0 && <p className='textCenter'>No rides yet</p>}
 
     
          
