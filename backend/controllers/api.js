@@ -1,5 +1,5 @@
 const Ride = require("../models/ride");
-
+const City = require("../models/City");
 module.exports = {
 //   getAllLessons: async (req, res) => {
 //     try {
@@ -88,8 +88,17 @@ module.exports = {
 //   },
   getRides: async (req, res) => {
     try {
-      const rides = await Ride.find()
+      const rides = await Ride.find({user:req.params.id})
       res.json(rides)
+    } catch (err) {
+      console.log(err);
+    }
+
+  },
+  getCities: async (req, res) => {
+    try {
+      const cities = await City.find()
+      res.json(cities)
     } catch (err) {
       console.log(err);
     }

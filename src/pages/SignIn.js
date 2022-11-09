@@ -13,8 +13,7 @@ function SignIn() {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [error, setError] = useState(null)
-  const [user, setUser] = useState()
-  console.log(user)
+
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
@@ -31,7 +30,7 @@ function SignIn() {
       
      })
      .catch(err=> {
-     
+     console.log(err)
       if(err) setError(err.response.data)
      })
 
