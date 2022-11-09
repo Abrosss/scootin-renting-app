@@ -86,7 +86,11 @@ function handleLogout(e) {
         <a className="nav-link" href="/location">Location</a>
         <a className="nav-link" href="/careers">Careers</a>
         </nav>
-        <Button link="/signin" text='Get Scootin'/>
+        {auth ? <Link className=" button button--nobackground" to="/account">My Account</Link>  :
+         <Button link="/signin" text='Get Scootin'/>
+        }
+        {auth&& <button type="button" className="button  " onClick={handleLogout}>Logout</button>}
+       
           </section>
         </section>
       </div>

@@ -41,8 +41,8 @@ function SignIn() {
     <section className='signup'>
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
-        <input onChange={e => setEmail(e.target.value)} type="email" placeholder='Email' name='email'></input>
-        <input onChange={e => setPassword(e.target.value)} type="password" placeholder='Password' name='password'></input>
+        <input autoComplete='true' onChange={e => setEmail(e.target.value)} type="email" placeholder='Email' name='email'></input>
+        <input autoComplete='true' onChange={e => setPassword(e.target.value)} type="password" placeholder='Password' name='password'></input>
        {error && <span>{error}</span>}
     <ButtonSubmit text="Sign In"/>
     <Link to='/signup'>Don't have an account? <span className='accent'>Sign Up</span> </Link>

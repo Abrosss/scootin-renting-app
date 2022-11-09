@@ -684,6 +684,12 @@ z-index: 10;
   h2 {
     font-size: 2.5rem;
   }
+  .signup::after {
+    display: none;
+  }
+  .totalPrice {
+    height: 35rem;
+  }
   .container--rent {
     height: 100%;
   }
@@ -711,8 +717,11 @@ z-index: 10;
     flex-direction: column;
     height: min-content;
   }
-  th:first-child, td:first-child {
-    min-height: 6rem;
+  thead {
+    display: none;
+  }
+ td:last-child {
+   border-bottom: 3px var(--yellow) solid;
   }
   .container--rent table {
     display: none;
