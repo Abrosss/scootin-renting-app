@@ -78,7 +78,7 @@ function Rides() {
           <th >Location</th>
           <th className='leftAlign' >Date</th>
             
-            <th className='leftAlign'>Time traveled</th>
+            <th className='leftAlign'>Time</th>
      
   
             <th className='leftAlign'>Paid</th>

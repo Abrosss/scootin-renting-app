@@ -14,7 +14,7 @@ function Dashboard() {
   const [totalPrice, setTotalPrice] = useState(null)
   const [error, setError] = useState(null)
   const [checkout, setCheckout] = useState(false)
-  const [cities, setCities] = useState(null)
+  const [cities, setCities] = useState([])
 
   // const cities = [ 
   //   {

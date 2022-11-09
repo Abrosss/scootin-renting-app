@@ -684,6 +684,52 @@ z-index: 10;
   h2 {
     font-size: 2.5rem;
   }
+  .container--rent {
+    height: 100%;
+  }
+  .container--rides {
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  table {
+    display: flex;
+    gap: 2rem;
+  }
+  thead {
+    display: flex;
+  
+  }
+  caption {
+    display: none;
+  }
+  
+  tr {
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+  }
+  th:first-child, td:first-child {
+    min-height: 6rem;
+  }
+  .container--rent table {
+    display: none;
+  }
+  .container--rent .button {
+    width: 100%;
+    margin-top: 5rem;
+  }
+  th, td {
+    margin-top: 1rem
+  }
+  .rides {
+    width: 100%;
+  }
+  .settings {
+    width: 100%;
+  }
   .middle {
     gap: 3.5rem;
     height: 100%;

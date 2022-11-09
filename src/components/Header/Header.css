@@ -58,6 +58,7 @@
       padding: 1.5rem 1rem;
       justify-content: center;
       text-align: center;
+      z-index: 5000;
     }
     .header .button{
      display: none;
