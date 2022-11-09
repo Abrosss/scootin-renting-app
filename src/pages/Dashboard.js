@@ -8,7 +8,7 @@ import ButtonSubmit from '../components/ButtonSubmit/ButtonSubmit'
 import axios from '../api/axios'
 function Dashboard() {
   const { auth } = useContext(AuthContext)
-  const [cityArray, setCityArray] = useState(null)
+  const [cityArray, setCityArray] = useState([])
   const [total, setTotal] = useState(false)
   const [current, setCurrent] = useState(null)
   const [totalPrice, setTotalPrice] = useState(null)
@@ -173,7 +173,7 @@ function Dashboard() {
       setCities(response.data);
     });
   }, []);
-  console.log(cities)
+  
   function handleChooseCity(e, data) {
    
     const city = cities.filter(city=>city.city===e.target.dataset.data)
@@ -221,7 +221,7 @@ function handleCheckout(e) {
   }
   return (
     <div className='dashboard'>
-     { cityArray === null &&
+     { cityArray.length === 0 &&
       <section className='countryListContainer'>
       <h2>Choose your location</h2>
         <ul className='countryList'>
@@ -294,7 +294,7 @@ function handleCheckout(e) {
          
         </tbody>
       </table>
-      <button onClick={() => setCityArray(null)}data-data="yokohama" type="button" className="button button--right">Choose another location</button>
+      <button onClick={() => setCityArray([])}data-data="yokohama" type="button" className="button button--right">Choose another location</button>
     {total !== false && <section onClick={closeContainer} className='totalPriceContainer'>
       {checkout === false &&
       <section className='totalPrice'>
