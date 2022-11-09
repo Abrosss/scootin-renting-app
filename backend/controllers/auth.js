@@ -3,7 +3,7 @@ const User = require("../models/User");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const jwtDecode = require('jwt-decode');
-const {registerValidation, loginValidation} = require('../config/validation')
+const {registerValidation, loginValidation, PasswordValidation} = require('../config/validation')
 // exports.getLogin = (req, res) => {
 //   if (req.user) {
 //     return res.redirect("/profile");
@@ -70,6 +70,69 @@ exports.postLogin = (req, res, next) => {
     });
   })(req, res, next);
 };
+exports.postChangePassword = async (req, res) => {
+  
+  try {
+    const user = await User.findById(req.params.id)
+
+    if (!user) {
+      return res.status(400).send('invalid value')
+    }
+
+    if(req.body.newPw.toString().length <6) return res.status(400).send('password must have at least 6 characters')
+    bcrypt.compare(req.body.currentPw, user.password, async function (err, isMatch) {
+    
+      if (err) {
+        throw err
+      }
+      if (!isMatch) res.status(400).send('Password not matched!')
+      else {
+ // if not error and password matched then we will hash password
+          const salt = bcrypt.genSaltSync(10)
+          const newPassword = bcrypt.hashSync(req.body.newPw, salt)
+
+          user.set({ password: newPassword})
+
+          await user.save()
+          res.status(200).send('Password Changed successfully!')
+      }
+     
+    })
+
+    
+  } catch (error) {
+    res.send('An error occured')
+    console.log(error)
+  }
+
+    
+  };
+  exports.postChangeUsername = async (req, res) => {
+    
+    
+       try {
+        const user = await User.findById(req.params.id)
+         if (!user) {
+          return res.status(400).send('invalid value')
+        }
+        let newUsername = req.body.newUsername
+        console.log(newUsername)
+        const usernameExists = await User.findOne({username:newUsername})
+        if(usernameExists) 
+         return res.status(400).send('Create a unique username')
+         
+        user.set({ username: newUsername})
+        await user.save()
+        res.status(200).send('Username Changed successfully!')
+       
+        //check if username exists
+        
+       
+  } catch (error) {
+    res.send('An error occured')
+    console.log(error)
+  }
+    };
 
 // exports.logout = (req, res) => {
 //   req.logout(() => {

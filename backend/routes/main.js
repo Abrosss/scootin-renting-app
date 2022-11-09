@@ -8,7 +8,8 @@ const authController = require("../controllers/auth")
 // // router.get("/feed", ensureAuth, postsController.getFeed);
 // router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
-
+router.post("/:id/changePassword", authController.postChangePassword)
+router.post("/:id/changeUsername", authController.postChangeUsername)
 // // router.get("/logout", authController.logout);
 // router.get("/signup", authController.getSignup);
 router.get("/users/:email", authController.getUsers);

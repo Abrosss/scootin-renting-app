@@ -650,6 +650,9 @@ td:first-child {
   margin-right: auto;
   padding: 1rem 1rem;
 }
+.textCenter {
+  text-align: center;
+}
 .logout {
   display: flex;
   gap: 2rem;
