@@ -1,12 +1,15 @@
 
   .banner--home {
     position: relative;
-    height: 80vh;
+    height: 100%;
+    
     background-image:url(/src/assets/images/home-hero-desktop.jpg);
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    padding: 10rem 0;
     padding-left: 10rem;
+  
   }
   .banner--home__text {
     width: 50%;
