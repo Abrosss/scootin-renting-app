@@ -292,6 +292,7 @@ cursor: pointer;
   font-size: 1.8rem;
   word-wrap: break-word;
   width: 100%;
+  text-align: left;
 }
 .stages div p {
   color: hsl(215deg, 5%, 54%);
