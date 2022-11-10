@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { useContext } from 'react'
 import AuthContext from '../context/AuthProvider'
 import { Navigate } from 'react-router-dom'
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
-import Button from "../components/Button/Button";
-import ButtonSubmit from '../components/ButtonSubmit/ButtonSubmit'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+
 import axios from '../api/axios'
+import data from '../cities.json';
+
+const citiesData = () => JSON.parse(JSON.stringify(data));
+const cities = citiesData()
 function Dashboard() {
   const { auth } = useContext(AuthContext)
   const [cityArray, setCityArray] = useState([])
@@ -14,7 +17,8 @@ function Dashboard() {
   const [totalPrice, setTotalPrice] = useState(null)
   const [error, setError] = useState(null)
   const [checkout, setCheckout] = useState(false)
-  const [cities, setCities] = useState([])
+  const [timeTraveled, setTimeTraveled] = useState(null)
+  // const [cities, setCities] = useState([])
 
   // const cities = [ 
   //   {
@@ -168,11 +172,12 @@ function Dashboard() {
 
   // ]
 
-  useEffect(() => {
-    axios.get("/api/cities").then((response) => {
-      setCities(response.data);
-    });
-  }, []);
+//   useEffect(() => {
+//     // axios.get("/api/cities").then((response) => {
+//     //   setCities(response.data);
+//     // });
+//     setCities(cities())
+//   }, []);
   
   function handleChooseCity(e, data) {
    
@@ -187,6 +192,7 @@ function Dashboard() {
       setError("Sorry not enough battery time")
       return setTotalPrice(0)
     } 
+    setTimeTraveled(e.target.value)
     setTotalPrice((e.target.value * current.price).toFixed(2)) 
   }
   function closeContainer(e) {
@@ -204,7 +210,7 @@ function handleCheckout(e) {
     street:current.location,
     charge:current.chargeLeft,
     price:current.price,
-    time: current.time,
+    time: timeTraveled,
     total:totalPrice
    }).then(res =>{
     if(res.status===200) {
@@ -300,7 +306,7 @@ function handleCheckout(e) {
       <section className='totalPrice'>
       <h5>Scoot at</h5>
      
-      <p>{current.location}</p> 
+      <p className='accent'>{current.location}</p> 
       <p>Charge left: <span className='accent'>{current.chargeLeft} %</span> </p>
       <p>(up to {current.time} hours)</p>
       <p>(Fixed price: {current.price} $ / hour)</p>

@@ -89,12 +89,12 @@ function Rides() {
         {rides.length>0 && rides.map(city => (
               <tr key={city._id}>
                
-                <td data-label="Descrição">{city.street}</td>
-                <td className='leftAlign' data-label="Descrição"><Moment format="YYYY/MM/DD" date={city.createdAt} /></td>
-              <td className='leftAlign' data-label="Administrador">{city.time} hour(s)</td>
+                <td >{city.street}</td>
+                <td className='leftAlign' ><Moment format="YYYY/MM/DD" date={city.createdAt} /></td>
+              <td className='leftAlign' >{city.time} hour(s)</td>
               
           
-              <td className='leftAlign'  data-label="Administrador">{city.total} $</td>
+              <td className='leftAlign'>{city.total} $</td>
             </tr>
          
             ))

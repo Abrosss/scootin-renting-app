@@ -9,8 +9,8 @@ function HeroBanner() {
     <section className="banner--home__text">
                   <h1>Scooter sharing made simple</h1>
                   <p>Scoot takes the hassle out of urban mobility. Our bikes are placed in convenient locations in each of our cities. Use our app to locate the nearest bike, unlock it with a tap, and you’re away!</p>
-                  <Button link="/signin" class="button--home button--banner" text="Get Scootin"/>
-                  <span className="dots--home"><img src={Dots}></img></span>
+                  <Button link="/signin" class="button button--home button--banner" text="Get Scootin"/>
+                  <span className="dots--home"><img src={Dots} alt=""></img></span>
                   </section>
                 </section>
   )

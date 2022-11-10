@@ -52,7 +52,7 @@
   .burger {
     display: none;
   }
-  @media only screen and (min-width:250px) and (max-width: 768px) {
+  @media only screen and (min-width:250px) and (max-width: 820px) {
     /* For mobile phones: */
     .header {
       padding: 1.5rem 1rem;
