@@ -305,7 +305,7 @@ function handleCheckout(e) {
       {checkout === false &&
       <section className='totalPrice'>
       <h5>Scoot at</h5>
-     
+     <div>
       <p className='accent'>{current.location}</p> 
       <p>Charge left: <span className='accent'>{current.chargeLeft} %</span> </p>
       <p>(up to {current.time} hours)</p>
@@ -313,7 +313,7 @@ function handleCheckout(e) {
       <input onChange={handleCalc} type="text" placeholder='I rent for ... hours'></input>
       {error && <span>{error}</span>}
       { totalPrice>0 &&<span>You pay <span className='accent'>{totalPrice} $</span> </span>}
-      
+      </div>
       <button onClick={handleCheckout} type="button" className="button ">Checkout</button>
     </section>
       }  
