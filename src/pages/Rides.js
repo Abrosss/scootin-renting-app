@@ -6,7 +6,7 @@ import axios from '../api/axios'
 import Moment from 'react-moment';
 import 'moment-timezone';
 function Rides() {
-  const {auth, setAuth } = useContext(AuthContext)
+  const {auth } = useContext(AuthContext)
   const [rides, setRides] = useState([]);
   const [error, setError] = useState(null);
   const [response, setResponse] = useState(null);
@@ -67,7 +67,7 @@ function Rides() {
     return <Navigate to={'/signin'} />;
   }
   return (
-    <section className='container container--rides'>
+    <main className='container container--rides'>
       <section className='rides'>
       <h4>My rides</h4>
      
@@ -140,7 +140,7 @@ function Rides() {
     </form>
     </section>
    
-    </section>
+    </main>
   );
 }
 

@@ -226,7 +226,7 @@ function handleCheckout(e) {
     return <Navigate to={'/signin'} />;
   }
   return (
-    <div className='dashboard'>
+    <main className='dashboard'>
      { cityArray.length === 0 &&
       <section className='countryListContainer'>
       <h2>Choose your location</h2>
@@ -325,7 +325,7 @@ function handleCheckout(e) {
    ))
 } 
       
-    </div>
+    </main>
   );
 }
 

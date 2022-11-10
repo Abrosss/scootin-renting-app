@@ -3,7 +3,7 @@ import AppStoreLogo from '../../assets/images/app-store.svg';
 
 function AppStoreButton() {
   return (
-    <button title='Appstore' className='button-social'><img src={AppStoreLogo}></img></button>
+    <button title='Appstore' className='button-social'><img alt="app store logo" src={AppStoreLogo}></img></button>
   )
 }
 

@@ -4,7 +4,7 @@ import GooglePlayLogo from '../../assets/images/google-play.svg';
 
 function GooglePlayButton() {
   return (
-    <button title='GooglePlay' className='button-social'><img src={GooglePlayLogo}></img></button>
+    <button title='GooglePlay' className='button-social'><img alt='google play logo' src={GooglePlayLogo}></img></button>
   )
 }
 

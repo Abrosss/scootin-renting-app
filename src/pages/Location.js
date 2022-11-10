@@ -14,7 +14,7 @@ function Location() {
     } 
   }
     return (
-      <div className="container">
+      <main className="container">
       <NavBanner text='Location'
       class='banner--careers'/>
       <section className="map">
@@ -45,7 +45,7 @@ function Location() {
         
     {sent && <section className='thankyou'><h5>Thank you. We'll connect soon!</h5></section>} 
       </section>}
-      </div>
+      </main>
     );
     
   }

@@ -29,7 +29,7 @@ function SignUp() {
 
   }
   return (
-   <section className='container'>
+   <main className='container'>
     <section className='signup'>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
@@ -42,7 +42,7 @@ function SignUp() {
       </form>
     </section>
     
-   </section>
+   </main>
   )
 }
 

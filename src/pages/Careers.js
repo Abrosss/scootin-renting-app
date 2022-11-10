@@ -13,7 +13,7 @@ function Careers() {
         } 
       }
     return (
-      <div className="container">
+      <main className="container">
       <NavBanner text='Careers'
       class='banner--careers'/>
      <div className='telemetry'>
@@ -70,7 +70,7 @@ function Careers() {
         
     {sent && <section className='thankyou'><h5>Thank you. We'll connect soon!</h5></section>} 
       </section>}
-    </div>
+    </main>
     );
   }
   

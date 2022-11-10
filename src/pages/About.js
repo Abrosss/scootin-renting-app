@@ -30,14 +30,14 @@ function About() {
             },
       ]
       const toggle = (i) => {
-            if(active == i)
+            if(active === i)
             return setActive(null)
             setActive(i)
  
       }
   
     return (
-      <div className="container">
+      <main className="container">
                 <NavBanner text='About'
                 class='banner--about'/>
      
@@ -111,7 +111,7 @@ function About() {
                   </section>
             </section>
       </section>
-      </div>
+      </main>
     );
   }
   

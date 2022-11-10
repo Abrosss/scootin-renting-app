@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Button from '../Button/Button'
-import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import {ReactComponent as YourSvg} from '../menu.svg'
 import {ReactComponent as Cross} from '../../assets/images/cross.svg'
 import Logo from '../../assets/images/logo.svg';
@@ -38,14 +37,14 @@ function Header() {
   
     return windowDimensions;
   };
-  const { height, width } = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const [activeMenu, setActiveMenu] = useState(false)
   const [elemHeight, setElemHeight] = useState(0)
   const navRef = useRef(null)
 
   useEffect(() => {
     setElemHeight(navRef.current.clientHeight)
-  })
+  }, [])
 function handleLogout(e) {
   e.preventDefault()
  
@@ -63,7 +62,7 @@ function handleLogout(e) {
        {activeMenu ? <Cross onClick={() => setActiveMenu(!activeMenu)} className="burger"/>  : <YourSvg onClick={() => setActiveMenu(!activeMenu)} className="burger"/>
         }
         <nav>
-       {auth ? <Link to="/dashboard"><img src={Logo}></img></Link> : <Link to="/"><img src={Logo}></img></Link>} 
+       {auth ? <Link to="/dashboard"><img alt="logo" src={Logo}></img></Link> : <Link to="/"><img alt="logo" src={Logo}></img></Link>} 
         <Link className="nav-link" to="/about">About</Link>
         <Link className="nav-link" to="/location">Location</Link>
         <Link className="nav-link" to="/careers">Careers</Link>

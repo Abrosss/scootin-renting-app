@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {useContext} from 'react'
 import AuthContext from '../context/AuthProvider'
 import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import axios from '../api/axios'
 const LOGIN_URL = '/login'
 function SignIn() {
@@ -37,7 +37,7 @@ function SignIn() {
   }
  
   return (
-   <section className='container'>
+   <main className='container'>
     <section className='signup'>
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
@@ -49,7 +49,7 @@ function SignIn() {
       </form>
     </section>
     
-   </section>
+   </main>
   )
 }
 
