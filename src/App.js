@@ -13,11 +13,11 @@ import Dashboard from './pages/Dashboard';
 import Rides from './pages/Rides';
 import { useEffect } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-
+import env from "react-dotenv";
 
 
 function App() {
-  const clientId = process.env.CLIENT_ID
+
   useEffect(() => {
     document.title = 'scoot';
   });
