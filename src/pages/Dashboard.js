@@ -226,7 +226,7 @@ function handleCheckout(e) {
     return <Navigate to={'/signin'} />;
   }
   return (
-    <main className='dashboard'>
+    <main className={cityArray.length > 0 ? 'dashboard height' : 'dashboard'}>
      { cityArray.length === 0 &&
       <section className='countryListContainer'>
       <h2>Choose your location</h2>
