@@ -17,12 +17,13 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
 function App() {
+  const clientId = process.env.CLIENT_ID
   useEffect(() => {
     document.title = 'scoot';
   });
 
   return (
-    <GoogleOAuthProvider clientId={process.env.CLIENT_ID}>
+    <GoogleOAuthProvider clientId="67597806160-r7of1c876ra19ujl6emnpiigobl0fu7a.apps.googleusercontent.com">
     <Router>
       <Header/>
       <Routes>
