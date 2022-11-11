@@ -808,9 +808,10 @@ z-index: 10;
     gap: 2rem;
     padding: 0 2rem;
   }
-  .stages div h4 {
+  .stages div h2 {
   
     font-size: 1.8rem;
+    text-align: center;
     word-wrap: break-word;
     width: 100%;
   }
