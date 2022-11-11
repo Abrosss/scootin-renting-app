@@ -477,7 +477,7 @@ cursor: pointer;
   display: flex;
   flex-direction: column;
 gap: 2rem;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 .countryListContainer {
@@ -646,6 +646,17 @@ td:first-child {
 }
 .rides {
   width: 70%;
+}
+.google {
+  min-width: 56px;
+  min-height: 56px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  background-image: url(/src/assets/images/google.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
 }
 .settings {
   width: 30%;

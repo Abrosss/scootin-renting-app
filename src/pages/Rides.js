@@ -14,9 +14,10 @@ function Rides() {
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
- 
+
     let user = JSON.parse( localStorage.getItem("user"))
-    axios.get(`/api/${user.id}/rides`).then((response) => {
+    console.log(user)
+    axios.get(`/api/${user.id || user._id}/rides`).then((response) => {
      
       setRides(response.data);
     });

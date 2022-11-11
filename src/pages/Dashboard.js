@@ -206,7 +206,7 @@ function Dashboard() {
 function handleCheckout(e) {
   e.preventDefault()
   setCheckout(true)
-  axios.post(`/api/${auth.id}/rides`, {
+  axios.post(`/api/${auth.id || auth._id}/rides`, {
     street:current.location,
     charge:current.chargeLeft,
     price:current.price,

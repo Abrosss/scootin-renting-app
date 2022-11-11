@@ -12,6 +12,8 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Rides from './pages/Rides';
 import { useEffect } from 'react';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
   });
 
   return (
+    <GoogleOAuthProvider clientId="67597806160-5lqlud30asi7ivt8uc1gs8aeufm8de4m.apps.googleusercontent.com">
     <Router>
       <Header/>
       <Routes>
@@ -35,6 +38,7 @@ function App() {
       </Routes>
       <Footer/>
     </Router>
+    </GoogleOAuthProvider>
   );
 }
 
