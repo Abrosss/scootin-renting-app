@@ -22,7 +22,7 @@ function App() {
   });
 
   return (
-    <GoogleOAuthProvider clientId="67597806160-5lqlud30asi7ivt8uc1gs8aeufm8de4m.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={process.env.CLIENT_ID}>
     <Router>
       <Header/>
       <Routes>
