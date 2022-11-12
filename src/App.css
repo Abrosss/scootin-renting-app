@@ -271,7 +271,7 @@ cursor: pointer;
 }
 .line .circle:nth-child(3) {
   background-image: url(/src/assets/images/ride.svg);
-  left: 95%;
+  left: 92%;
   bottom: 0;
 }
 .stages {
