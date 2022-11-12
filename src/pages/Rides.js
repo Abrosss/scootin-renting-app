@@ -119,7 +119,7 @@ function Rides() {
     </section>
     <section className='settings'>
     <h4>Settings</h4>
-    
+    <p>Hi <span className='accent'>{username ? username : auth.username}</span> !</p>
     <form>
     <span className='textCenter'>{error}</span>
     <span className='textCenter'>{response}</span>

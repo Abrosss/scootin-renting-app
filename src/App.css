@@ -271,7 +271,7 @@ cursor: pointer;
 }
 .line .circle:nth-child(3) {
   background-image: url(/src/assets/images/ride.svg);
-  left: 92%;
+  left: 95%;
   bottom: 0;
 }
 .stages {
@@ -673,7 +673,7 @@ td:first-child {
 .settings form {
   width: 100%;
   display: flex;
-  margin-top: 2rem;
+  margin-top: 1rem;
   flex-direction: column;
 
   gap: 1rem;
