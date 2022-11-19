@@ -56,10 +56,18 @@ function handleLogout(e) {
  function proportion() {
   return Math.floor(elemHeight * 100 / height) 
  }
+ function openMenu() {
+  setActiveMenu(!activeMenu)
+  document.body.style.position='fixed'
+ }
+ function closeMenu() {
+  setActiveMenu(!activeMenu)
+  document.body.style.position='unset'
+ }
 
     return (
       <div ref={navRef} className="header">
-       {activeMenu ? <Cross onClick={() => setActiveMenu(!activeMenu)} className="burger"/>  : <YourSvg onClick={() => setActiveMenu(!activeMenu)} className="burger"/>
+       {activeMenu ? <Cross onClick={closeMenu} className="burger"/>  : <YourSvg onClick={openMenu} className="burger"/>
         }
         <nav>
        {auth ? <Link to="/dashboard"><img alt="logo" src={Logo}></img></Link> : <Link to="/"><img alt="logo" src={Logo}></img></Link>} 
