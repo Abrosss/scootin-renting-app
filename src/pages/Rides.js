@@ -12,15 +12,19 @@ function Rides() {
   const [response, setResponse] = useState(null);
   const [password, setPassword] = useState([{ old: "", new: ""}]);
   const [username, setUsername] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
 
     let user = JSON.parse( localStorage.getItem("user"))
-    console.log(user)
+   setIsLoading(true)
     axios.get(`/api/${user.id || user._id}/rides`).then((response) => {
      
       setRides(response.data);
-    });
+      setIsLoading(false)
+    }).catch(err => {
+      console.log(err)
+      setIsLoading(false)
+    })
   }, []);
 
  
@@ -35,7 +39,7 @@ function Rides() {
   }
   function handleChangePassword(e) {
     e.preventDefault()
-    axios.post(`${auth.id}/changePassword`, {
+    axios.post(`${auth._id}/changePassword`, {
       currentPw:password.old,
       newPw:password.new
      }).then(res =>{
@@ -48,13 +52,14 @@ function Rides() {
   }
   
   function handleChangeUsername(e) {
-    
+    console.log(auth)
     e.preventDefault()
-    axios.post(`${auth.id}/changeUsername`, {
+    axios.post(`${auth._id}/changeUsername`, {
       newUsername: username
      }).then(res =>{
       if(res.status===200) {
         setResponse(res.data)
+        console.log(res)
         const newData = {
           ...auth,
           username: username}
@@ -69,9 +74,11 @@ function Rides() {
   }
   return (
     <main className='container container--rides'>
+      
+      
       <section className='rides'>
       <h4>My rides</h4>
-     
+     {isLoading ? <section className='loading-container'><div class="lds-ring"><div></div><div></div><div></div><div></div></div></section> :
         <table>
         
         <thead>
@@ -86,7 +93,7 @@ function Rides() {
           </tr>
         </thead>
         <tbody>
-    
+
         {rides.length>0 && rides.map(city => (
               <tr key={city._id}>
                
@@ -98,25 +105,18 @@ function Rides() {
               <td className='leftAlign'>{city.total} $</td>
             </tr>
          
-            ))
+            ))}
         
-            }
-         
+            
+          
         </tbody>
       </table> 
-      {rides.length === 0 && <p className='textCenter'>No rides yet</p>}
-
-    
-         
-        
-   
-          
-          
-        
-      
-    
-    
+       }
+      { !isLoading && rides.length === 0 && <p className='textCenter'>No rides yet</p>}
+       
     </section>
+      
+      
     <section className='settings'>
     <h4>Settings</h4>
     <p>Hi <span className='accent'>{username ? username : auth.username}</span> !</p>
