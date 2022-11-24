@@ -11,22 +11,23 @@ import jwtDecode from 'jwt-decode'
 const LOGIN_URL = '/login'
 function SignIn() {
   axios.defaults.withCredentials = true
-  const {auth, setAuth} = useContext(AuthContext)
+  const {setAuth} = useContext(AuthContext)
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [error, setError] = useState(null)
-
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const user = { email, password };
+    setIsLoading(true)
     axios.post(LOGIN_URL,user).then(res =>{
     
       
       if(res.status===200) {
         setAuth(res.data);
-
+        setIsLoading(false)
         navigate("/dashboard")
       localStorage.setItem('user', JSON.stringify(res.data))
       }
@@ -34,12 +35,13 @@ function SignIn() {
      })
      .catch(err=> {
      console.log(err)
+     setIsLoading(false)
       if(err) setError(err.response.data)
      })
 
   }
   const handleGoogle = (user) => {
-    console.log(user.email)
+    setIsLoading(true)
     axios.post("/google-signup", {
 
       email:user.email,
@@ -48,12 +50,16 @@ function SignIn() {
      }).then(res =>{
       if(res.status===200) {
         setAuth(res.data)
+        setIsLoading(false)
         localStorage.setItem('user', JSON.stringify(res.data))
         navigate("/dashboard")
       }
       
      })
-     .catch(err=>console.log(err))
+     .catch(err=> {
+      console.log(err)
+      setIsLoading(true)
+     })
   }
   return (
    <main className='container'>
@@ -62,7 +68,11 @@ function SignIn() {
       <form onSubmit={handleSubmit}>
         <input autoComplete='true' onChange={e => setEmail(e.target.value)} type="email" placeholder='Email' name='email'></input>
         <input autoComplete='true' onChange={e => setPassword(e.target.value)} type="password" placeholder='Password' name='password'></input>
-       {error && <span>{error}</span>}
+        {isLoading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        :error && <span>{error}</span>
+        }
+        
+       
     <ButtonSubmit text="Sign In"/>
     <GoogleLogin
     onSuccess={credentialResponse => {
