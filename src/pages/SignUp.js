@@ -14,11 +14,12 @@ function SignUp() {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const [confirmPassword, setConfirmPassword] = useState(null)
-  const [error, setError] = useState(null)
+  const [error] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleGoogle = (user) => {
-    console.log(user.email)
+    setIsLoading(true)
     axios.post("/google-signup", {
 
       email:user.email,
@@ -27,27 +28,35 @@ function SignUp() {
      }).then(res =>{
       if(res.status===200) {
         setAuth(res.data)
+        setIsLoading(false)
         localStorage.setItem('user', JSON.stringify(res.data))
         navigate("/dashboard")
       }
       
      })
-     .catch(err=>console.log(err))
+     .catch(err=> {
+      console.log(err)
+      setIsLoading(false)
+     })
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    setIsLoading(true)
     axios.post(SIGNUP_URL, {
       email:email,
       password:password,
       confirm_password:confirmPassword
      }).then(res =>{
       if(res.status===200) {
-       
+        setIsLoading(false)
         navigate("/signin")
       }
       
      })
-     .catch(err=>(err))
+     .catch(err=> {
+      console.log(err)
+      setIsLoading(false)
+     })
 
   }
   return (
@@ -58,7 +67,10 @@ function SignUp() {
         <input onChange={e => setEmail(e.target.value)} type="email" placeholder='Email' name='email'></input>
         <input onChange={e => setPassword(e.target.value)} type="password" placeholder='Password' name='password'></input>
         <input onChange={e => setConfirmPassword(e.target.value)} type="password" placeholder='Confirm Password' name='confirm_password'></input>
-       {error && <span>{error}</span>} 
+        {isLoading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        :error && <span>{error}</span>
+        }
+   
     <ButtonSubmit text="Sign Up"/>
     <GoogleLogin
     onSuccess={credentialResponse => {
