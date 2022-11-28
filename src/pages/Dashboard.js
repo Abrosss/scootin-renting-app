@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import AuthContext from '../context/AuthProvider'
 import { Navigate } from 'react-router-dom'
@@ -52,9 +52,9 @@ function Dashboard() {
   //          },
   //       ],
   //       price: 25
-        
+
   //     }
-        
+
   //     ],
   //   },
   //   {
@@ -88,9 +88,9 @@ function Dashboard() {
   //          },
   //       ],
   //       price: 55
-        
+
   //     }
-        
+
   //     ],
   //   },
   //   {
@@ -124,9 +124,9 @@ function Dashboard() {
   //          },
   //       ],
   //       price: 15
-        
+
   //     }
-        
+
   //     ],
   //   },
   //   {
@@ -160,171 +160,171 @@ function Dashboard() {
   //          },
   //       ],
   //       price: 65
-        
+
   //     }
-        
+
   //     ]
   //   }
-   
 
 
-  
+
+
 
   // ]
 
-//   useEffect(() => {
-//     // axios.get("/api/cities").then((response) => {
-//     //   setCities(response.data);
-//     // });
-//     setCities(cities())
-//   }, []);
-  
+  //   useEffect(() => {
+  //     // axios.get("/api/cities").then((response) => {
+  //     //   setCities(response.data);
+  //     // });
+  //     setCities(cities())
+  //   }, []);
+
   function handleChooseCity(e, data) {
-   
-    const city = cities.filter(city=>city.city===e.target.dataset.data)
+
+    const city = cities.filter(city => city.city === e.target.dataset.data)
 
     setCityArray(city)
   }
 
   function handleCalc(e) {
     setError(null)
-    if(e.target.value > current.time) {
+    if (e.target.value > current.time) {
       setError("Sorry not enough battery time")
       return setTotalPrice(0)
-    } 
+    }
     setTimeTraveled(e.target.value)
-    setTotalPrice((e.target.value * current.price).toFixed(2)) 
+    setTotalPrice((e.target.value * current.price).toFixed(2))
   }
   function closeContainer(e) {
     e.stopPropagation()
-    if(e.target.className === "totalPriceContainer") {
+    if (e.target.className === "totalPriceContainer") {
       setTotal(false)
       setCheckout(false)
-    } 
+    }
   }
 
-function handleCheckout(e) {
-  e.preventDefault()
-  setCheckout(true)
-  axios.post(`/api/${auth.id || auth._id}/rides`, {
-    street:current.location,
-    charge:current.chargeLeft,
-    price:current.price,
-    time: timeTraveled,
-    total:totalPrice
-   }).then(res =>{
-    if(res.status===200) {
-     console.log(res)
-    }
-    
-   })
-   .catch(err=>setError(err.response.data))
-}
- 
+  function handleCheckout(e) {
+    e.preventDefault()
+    setCheckout(true)
+    axios.post(`/api/${auth.id || auth._id}/rides`, {
+      street: current.location,
+      charge: current.chargeLeft,
+      price: current.price,
+      time: timeTraveled,
+      total: totalPrice
+    }).then(res => {
+      if (res.status === 200) {
+        console.log(res)
+      }
+
+    })
+      .catch(err => setError(err.response.data))
+  }
+
 
   if (!localStorage.getItem('user')) {
     return <Navigate to={'/signin'} />;
   }
   return (
     <main className={cityArray.length > 0 ? 'dashboard height' : 'dashboard'}>
-     { cityArray.length === 0 &&
-      <section className='countryListContainer'>
-      <h2>Choose your location</h2>
-        <ul className='countryList'>
-        <button onClick={handleChooseCity}data-data="newyork" type="button" className="button">New York</button>
-        <button onClick={handleChooseCity}data-data="london" type="button" className="button">London</button>
-        <button onClick={handleChooseCity}data-data="jakarta" type="button" className="button">Jakarta</button>
-        <button onClick={handleChooseCity}data-data="yokohama" type="button" className="button">Yokohama</button>
-        </ul>
-      </section>
-}
+      {cityArray.length === 0 &&
+        <section className='countryListContainer'>
+          <h2>Choose your location</h2>
+          <ul className='countryList'>
+            <button onClick={handleChooseCity} data-data="newyork" type="button" className="button">New York</button>
+            <button onClick={handleChooseCity} data-data="london" type="button" className="button">London</button>
+            <button onClick={handleChooseCity} data-data="jakarta" type="button" className="button">Jakarta</button>
+            <button onClick={handleChooseCity} data-data="yokohama" type="button" className="button">Yokohama</button>
+          </ul>
+        </section>
+      }
 
-      
 
-{ cityArray &&
-  cityArray.map(city => (
-<MapContainer key={city.city}  center={city.center} zoom={10} scrollWheelZoom={true}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {
-          city.sites.map(point => (
-            <Marker key={point.coordinates[1]} position={point.coordinates}>
-              <Popup>
-               {point.street} <br /><span className='accent'>Charge left: {point.charge} % </span> <br/>
-               (up to {point.time} hours)
-               <button onClick={() => {
-                setTotal(true)
-                setCurrent({location:point.street, chargeLeft:point.charge, time:point.time, price:city.price})
-              }} type="button" className="button">Rent a ride</button>
-              </Popup>
-            </Marker>
-          ))
-        }
- 
-      </MapContainer>
-  ))
-}
-{ cityArray &&
-  cityArray.map(city => (
-<section key={city.city} className='container container--rent'>
 
-      <table>
-        <caption className='accent'>Available scoots</caption>
-        <thead>
-          <tr>
-            <th >Location</th>
-            <th>Charge left</th>
-            <th>Starting at</th>
-  
-            <th>Rent</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            city.sites.map(site => (
-              <tr key={site.coordinates[0]}>
-                <td data-label="Descrição">{site.street}</td>
-              <td className='accent' data-label="Administrador">{site.charge} %</td>
-              
-              <td  data-label="Administrador">{city.price} $ / hour</td>
-              <td data-label="Administrador"><button onClick={() => {
-                setTotal(true)
-                setCurrent({location:site.street, chargeLeft:site.charge, time:site.time, price:city.price})
-              }} type="button" className="button">Rent a ride</button></td>
-            </tr>
-            ))
-          }
-         
-         
-        </tbody>
-      </table>
-      <button onClick={() => setCityArray([])}data-data="yokohama" type="button" className="button button--right">Choose another location</button>
-    {total !== false && <section onClick={closeContainer} className='totalPriceContainer'>
-      {checkout === false &&
-      <section className='totalPrice'>
-      <h5>Scoot at</h5>
-     <div>
-      <p className='accent'>{current.location}</p> 
-      <p>Charge left: <span className='accent'>{current.chargeLeft} %</span> </p>
-      <p>(up to {current.time} hours)</p>
-      <p>(Fixed price: {current.price} $ / hour)</p>
-      <input onChange={handleCalc} type="text" placeholder='I rent for ... hours'></input>
-      {error && <span>{error}</span>}
-      { totalPrice>0 &&<span>You pay <span className='accent'>{totalPrice} $</span> </span>}
-      </div>
-      <button onClick={handleCheckout} type="button" className="button ">Checkout</button>
-    </section>
-      }  
-       {checkout && <section className='thankyou'><h5>Thank you. Have a nice ride!</h5></section>} 
-      </section>}
-      
-      
-      </section>
-   ))
-} 
-      
+      {cityArray &&
+        cityArray.map(city => (
+          <MapContainer key={city.city} center={city.center} zoom={10} scrollWheelZoom={true}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {
+              city.sites.map(point => (
+                <Marker key={point.coordinates[1]} position={point.coordinates}>
+                  <Popup>
+                    {point.street} <br /><span className='accent'>Charge left: {point.charge} % </span> <br />
+                    (up to {point.time} hours)
+                    <button onClick={() => {
+                      setTotal(true)
+                      setCurrent({ location: point.street, chargeLeft: point.charge, time: point.time, price: city.price })
+                    }} type="button" className="button">Rent a ride</button>
+                  </Popup>
+                </Marker>
+              ))
+            }
+
+          </MapContainer>
+        ))
+      }
+      {cityArray &&
+        cityArray.map(city => (
+          <section key={city.city} className='container container--rent'>
+
+            <table>
+              <caption className='accent'>Available scoots</caption>
+              <thead>
+                <tr>
+                  <th >Location</th>
+                  <th>Charge left</th>
+                  <th>Starting at</th>
+
+                  <th>Rent</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  city.sites.map(site => (
+                    <tr key={site.coordinates[0]}>
+                      <td data-label="Descrição">{site.street}</td>
+                      <td className='accent' data-label="Administrador">{site.charge} %</td>
+
+                      <td data-label="Administrador">{city.price} $ / hour</td>
+                      <td data-label="Administrador"><button onClick={() => {
+                        setTotal(true)
+                        setCurrent({ location: site.street, chargeLeft: site.charge, time: site.time, price: city.price })
+                      }} type="button" className="button">Rent a ride</button></td>
+                    </tr>
+                  ))
+                }
+
+
+              </tbody>
+            </table>
+            <button onClick={() => setCityArray([])} data-data="yokohama" type="button" className="button button--right">Choose another location</button>
+            {total !== false && <section onClick={closeContainer} className='totalPriceContainer'>
+              {checkout === false &&
+                <section className='totalPrice'>
+                  <h5>Scoot at</h5>
+                  <div>
+                    <p className='accent'>{current.location}</p>
+                    <p>Charge left: <span className='accent'>{current.chargeLeft} %</span> </p>
+                    <p>(up to {current.time} hours)</p>
+                    <p>(Fixed price: {current.price} $ / hour)</p>
+                    <input onChange={handleCalc} type="text" placeholder='I rent for ... hours'></input>
+                    {error && <span>{error}</span>}
+                    {totalPrice > 0 && <span>You pay <span className='accent'>{totalPrice} $</span> </span>}
+                  </div>
+                  <button onClick={handleCheckout} type="button" className="button ">Checkout</button>
+                </section>
+              }
+              {checkout && <section className='thankyou'><h5>Thank you. Have a nice ride!</h5></section>}
+            </section>}
+
+
+          </section>
+        ))
+      }
+
     </main>
   );
 }
