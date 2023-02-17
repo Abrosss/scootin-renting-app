@@ -16,6 +16,3 @@ Users should be able to:
 
 
 
-## Author
-
-- [Twitter](https://twitter.com/ronessu)
