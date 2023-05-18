@@ -67,6 +67,11 @@ a {
   font-weight: 700;
   text-decoration: underline var(--yellow);
 }
+.button.no-background {
+  background-color: transparent;
+  border: 3px var(--yellow) solid;
+  color: var(--yellow);
+}
 .explore {
   width: 100%;
   display: flex;
@@ -446,7 +451,7 @@ cursor: pointer;
   background-image: url(/src/assets/images/left-downward-arrow.svg);
   background-repeat: no-repeat;
   z-index: 8;
-  bottom: 15%;
+  bottom: 19%;
   right: -10%
 }
 .signup form {
@@ -469,10 +474,7 @@ cursor: pointer;
   border: 3px var(--yellow)  solid;
 
 }
-.signup .button {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
+
 .dashboard {
   display: flex;
   flex-direction: column;

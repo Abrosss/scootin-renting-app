@@ -17,10 +17,12 @@ function SignIn() {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
-
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, demo) => {
+    let demoEmail = 'demodemo1@gmail.com'
+    let demoPW = '123456'
     e.preventDefault()
-    const user = { email, password };
+    const user = demo ? { email:demoEmail, password:demoPW } : { email, password };
+
     setIsLoading(true)
     axios.post(LOGIN_URL,user).then(res =>{
     
@@ -65,6 +67,7 @@ function SignIn() {
    <main className='container'>
     <section className='signup'>
       <h2>Sign In</h2>
+      
       <form onSubmit={handleSubmit}>
         <input autoComplete='true' onChange={e => setEmail(e.target.value)} type="email" placeholder='Email' name='email'></input>
         <input autoComplete='true' onChange={e => setPassword(e.target.value)} type="password" placeholder='Password' name='password'></input>
@@ -73,7 +76,8 @@ function SignIn() {
         }
         
        
-    <ButtonSubmit text="Sign In"/>
+    <ButtonSubmit text="Sign In" func={(e) => handleSubmit(e, false)}/>
+    <ButtonSubmit text="Open DEMO" func={(e) => handleSubmit(e, true)}/>
     <GoogleLogin
     onSuccess={credentialResponse => {
       handleGoogle(jwtDecode(credentialResponse.credential))
@@ -86,6 +90,7 @@ function SignIn() {
 />
     <Link to='/signup'>Don't have an account? <span className='accent'>Sign Up</span> </Link>
       </form>
+
     </section>
     
    </main>

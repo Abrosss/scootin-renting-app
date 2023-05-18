@@ -51,9 +51,8 @@ function Rides() {
   }
 
   function handleChangeUsername(e) {
-    
     e.preventDefault()
-    axios.post(`${auth._id}/changeUsername`, {
+    axios.post(`${auth.id}/changeUsername`, {
       newUsername: username
     }).then(res => {
       if (res.status === 200) {
