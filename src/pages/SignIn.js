@@ -67,13 +67,13 @@ function SignIn() {
    <main className='container'>
     <section className='signup'>
       <h2>Sign In</h2>
-      
-      <form onSubmit={handleSubmit}>
-        <input autoComplete='true' onChange={e => setEmail(e.target.value)} type="email" placeholder='Email' name='email'></input>
-        <input autoComplete='true' onChange={e => setPassword(e.target.value)} type="password" placeholder='Password' name='password'></input>
-        {isLoading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+      {isLoading ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
         :error && <span>{error}</span>
         }
+      <form>
+        <input autoComplete='true' onChange={e => setEmail(e.target.value)} type="email" placeholder='Email' name='email'></input>
+        <input autoComplete='true' onChange={e => setPassword(e.target.value)} type="password" placeholder='Password' name='password'></input>
+      
         
        
     <ButtonSubmit text="Sign In" func={(e) => handleSubmit(e, false)}/>
